@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  function countHandler() {
+    setCount((prevState) => {
+      return prevState + 1;
+    });
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="container">
+      <div className="readme">
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          {count < 5
+            ? "Nothing special here. Created to practise states for a second."
+            : "Didnt you click enough? Hire me if you like it that much!"}
         </p>
+        {count < 6 && (
+          <p>
+            Oh hello there! If thats enough for you, feel free to hire me.
+            Otherwise stay on track! More incoming!
+          </p>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="App">
+        <h1>
+          {count < 5
+            ? "Click until something happens!"
+            : "STOP I CANT TAKE IT ANYMORE"}
+        </h1>
+        {count < 6 && <button onClick={countHandler}>Click me</button>}
+        <h2>{count}</h2>
+        {count > 5 && <p>6 is my favourite number.</p>}
+        <p>TheoJS</p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
